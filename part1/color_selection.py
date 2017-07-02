@@ -13,9 +13,11 @@ if __name__ == '__main__':
     w = img.shape[1]
     color_select = np.copy(img)
     rgb_threshold = [210, 220, 210]
-    filter_out_indices = (img[:, :, 0] < rgb_threshold[0]) | (img[:, :, 1] < rgb_threshold[1]) | (img[:, :, 2] < rgb_threshold[2])
-    print(filter_out_indices.shape)
-    color_select[filter_out_indices] = 0
+    color_filter_out_indices = (img[:, :, 0] < rgb_threshold[0]) | \
+                               (img[:, :, 1] < rgb_threshold[1]) | \
+                               (img[:, :, 2] < rgb_threshold[2])
+    print(color_filter_out_indices.shape)
+    color_select[color_filter_out_indices] = 0
 
     fig = plt.gcf()
     # draw the R channel

@@ -38,12 +38,12 @@ accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 
 model_save_path = "./simple_minist_model.ckpt"
 batch_size = 128
-epoches = 100
+epochs = 100
 with tf.Session() as session:
     # must run this operation to initialize all variables
     session.run(tf.global_variables_initializer())
 
-    for epoch in range(epoches):
+    for epoch in range(epochs):
         num_of_batches = math.ceil(mnist_data.train.num_examples / batch_size)
 
         for i in range(num_of_batches):

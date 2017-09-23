@@ -24,7 +24,7 @@ dropout = 0.75  # Dropout, probability to keep units
 weights = {
     'conv1': tf.Variable(tf.random_normal([5, 5, 1, 32])),
     'conv2': tf.Variable(tf.random_normal([5, 5, 32, 64])),
-    'full1': tf.Variable(tf.random_normal([7*7*64, 1024])),
+    'full1': tf.Variable(tf.random_normal([7 * 7 * 64, 1024])),
     'full2': tf.Variable(tf.random_normal([1024, n_classes]))}
 
 biases = {
@@ -33,10 +33,12 @@ biases = {
     'full1_bias': tf.Variable(tf.random_normal([1024])),
     'full2_bias': tf.Variable(tf.random_normal([n_classes]))}
 
+
 def conv2d(x, W, b, stride=1):
     h = tf.nn.conv2d(x, W, [1, stride, stride, 1], padding="SAME")
     h = tf.nn.bias_add(h, b)
     return tf.nn.relu(h)
+
 
 def maxpool2d(x, k=2):
     return tf.nn.max_pool(x, ksize=[1, k, k, 1], strides=[1, k, k, 1], padding="SAME")

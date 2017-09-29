@@ -101,7 +101,7 @@ def LeNet(input_x):
     return logits_
 
 
-x = tf.placeholder(tf.float32, (None, 32, 32, 1))
+x = tf.placeholder(tf.float32, [None, 32, 32, 1])
 y = tf.placeholder(tf.int32, None)
 one_hot_y = tf.one_hot(y, 10)
 
@@ -150,8 +150,8 @@ with tf.Session() as sess:
     saver.save(sess, './lenet')
     print("Model saved")
 
-    with tf.Session() as sess:
-        saver.restore(sess, tf.train.latest_checkpoint('.'))
+with tf.Session() as sess:
+    saver.restore(sess, tf.train.latest_checkpoint('.'))
 
-        test_accuracy = evaluate(X_test, y_test)
-        print("Test Accuracy = {:.3f}".format(test_accuracy))
+    test_accuracy = evaluate(X_test, y_test)
+    print("Test Accuracy = {:.3f}".format(test_accuracy))

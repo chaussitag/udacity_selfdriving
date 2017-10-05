@@ -59,5 +59,7 @@ if __name__ == '__main__':
     ax6 = fig.add_subplot(3, 2, 6, title = "combined(only keep interested region)")
     ax6.imshow(color_region_combined_select1)
 
+    plt.tight_layout()
+
     plt.draw()
     plt.show()
